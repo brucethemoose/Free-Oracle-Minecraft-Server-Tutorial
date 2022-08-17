@@ -23,7 +23,7 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 - Install an SSH client per the instructions here: https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
 - Press `F1`, start typing `SSH Open`, and open your ssh configuration file. If you have more than one, edit the one in your user folder:  
   ![SSH](https://user-images.githubusercontent.com/8422224/185022082-1406c5ae-5a9a-40c8-968f-efb886b26190.PNG)
-- Enter the public IP of your server you got from the Oracle blog, and the path to your SSH key you downloaded from Oracle:  
+- Enter the public IP of your server, and the path to your SSH key you downloaded from Oracle:  
  ![Config](https://user-images.githubusercontent.com/8422224/185022809-e2e88b12-c6f6-42bc-8624-5182c47ed376.PNG)
 - To connect with your server, hit the green button in the bottom left of VScode:  
  ![Green](https://user-images.githubusercontent.com/8422224/185023259-17108ceb-73f8-4847-bbe8-7e72e6b034e5.PNG)
@@ -33,6 +33,22 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 - Now the home folder of your Oracle linux server is here! You can create folders and files, move them from your desktop, and download them off the server from this panel. 
 
 
+
+# Setting up your server
+
+- Consider taking a crash course in linux CLI, either from [text guides like this](https://scicomp.aalto.fi/scicomp/shell/) or from a Youtube video. The terminal to your server is in the bottom of VSCode, and you can open multiple terminals with the "+" button.
+- Java 17 can be installed with the command `sudo yum install java-17-openjdk.aarch64`. You can find other Java versions with `yum search JDK`
+- 
+
 # Installing Minecraft
 
-WIP
+- Modded minecraft servers can be downloaded as complete zips from Modrinth, Curseforge and so on. You can either download them/extract them locally and (slowly) upload the whole folder with VSCode, or you can directly download the zip with `wget (url to zip)` and extract it with `unzip (name of zip file` afterin `cd`ing into the directory you want it in.
+- Bundles sh files in modpacks need to be made executable with `sudo chmod +x (.sh file). 
+- If you want the Minecraft server to auto restart after crashing, you can add a bash `while true` loop to the sh file.
+- Running the server with an `&` at the end of the command, such as `./server-start.sh &`, will keep the server running after you close the ssh terminal.
+
+# Performance Tips (WIP)
+
+- Start the server/script with the prefix `sudo nice -n 18` to ensure the server gets priority over other processes. 
+- Running GraalVM EE instead of OpenJDK can provide a ~15% speedup. But as of this post, it us [missing](https://blogs.oracle.com/developers/post/how-to-install-oracle-java-in-oracle-cloud-infrastructure) from OCL9's repos, so it has to be [manually installed](https://docs.oracle.com/en/graalvm/enterprise/22/docs/getting-started/index.html), and you have to use GraalVM 22.1.0 instead of the latest release.
+- [Huge Pages] provides a nice speedup but Oracle's default security configuration seems to prevent *either* implementation from working. 
