@@ -46,10 +46,11 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 - .sh files in modpacks must be made executable with `sudo chmod +x (.sh file). 
 - If you want the Minecraft server to auto restart after crashing, you can add a bash `while true...done` loop to the sh file.
 - Running the server with an `& disown` at the end of the command, such as `./server-start.sh & disown`, will keep the server running after closing the ssh terminal.
-- Running commands with `sudo` in the background can be done with `nohup sudo -b [command]`
+- Running commands with `sudo` in the background is  `nohup sudo -b nohup [command] & disown`. This is probably redundant, but sudo applications seem to quit in the background with any other combination.
 
 # Performance Tips
 
+- Tune the server performance profile for Minecraft with `sudo tuned-adm profile latency-performance oci-rps-xps oci-busy-polling oci-cpu-power oci-nic`
 - Start the server/script with the prefix `sudo nice -n -18` to ensure the server gets priority over other processes. This requires `sudo`.
 - Set `sync-chunk-writes=false` in your server.properties file, and use a backup mod like FTB Backups, as you should do that anyway.  
 - These are my current java arguments, though some (including zgc) are being benchmarked as I type this: `-server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=100 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=16M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:MaxTenuringThreshold=1 -XX:ConcGCThreads=3 -XX:+ExplicitGCInvokesConcurrent -XX:G1RSetUpdatingPauseTimePercent=12 -XX:+PerfDisableSharedMem -XX:+UseStringDeduplication -XX:+UseFastUnorderedTimeStamps -XX:AllocatePrefetchStyle=1 -XX:+OmitStackTraceInFastThrow -XX:ThreadPriorityPolicy=1 -XX:+UseNUMA -XX:-DontCompileHugeMethods`
