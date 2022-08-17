@@ -46,7 +46,7 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 - If you want the Minecraft server to auto restart after crashing, you can add a bash `while true...done` loop to the sh file.
 - Running the server with an `& disown` at the end of the command, such as `./server-start.sh & disown`, will keep the server running after closing the ssh terminal.
 
-# Performance Tips (WIP)
+# Performance Tips
 
 - Start the server/script with the prefix `sudo nice -n -18` to ensure the server gets priority over other processes. 
 - Set `sync-chunk-writes=false` in your server.properties file, and use a backup mod like FTB Backups, as you should do that anyway.  
