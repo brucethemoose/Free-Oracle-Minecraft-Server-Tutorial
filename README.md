@@ -1,6 +1,6 @@
 # What? A *free* Minecraft server?
 
-Yes, Oracle will give you 4 good cores, 24GB and a big SSD for free. This is better Aternos or even some paid hosts, but you have to configure everything yourself.
+Yes, Oracle will give you 4 good cores, 24GB and a big SSD for free. This is better than Aternos or even some paid hosts, but you have to configure everything yourself.
 
 Follow this Oracle guide **to the letter**: https://blogs.oracle.com/developers/post/how-to-set-up-and-run-a-really-powerful-free-minecraft-server-in-the-cloud
 
