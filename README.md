@@ -8,7 +8,7 @@ But there are gaps in the guide, particularly if you want to squeeze every drop 
 
 # Selecting a Virtual Machine Instance
 
-- If you intend to run a modded server (or a highly populated vanilla server), when you get to this section, ignore Oracle's advice and opt for 4 cores and at 12-24GB of RAM.
+- If you intend to run a modded server (or a highly populated vanilla server), when you get to this section, ignore Oracle's advice and opt for 4 cores and 12-24GB RAM.
 - Select the latest version of Oracle Linux as your image, which it doesn't always default to:
 ![Oracle9](https://user-images.githubusercontent.com/8422224/185014138-54e002e2-e101-4c58-a94a-778755d0a2e1.PNG)
 - Scroll down to the "boot volume" tab. Select between 75GB and 200GB of storage (which is the limit for free instances), and move the "VPU" slider all the way to the right:
@@ -37,8 +37,7 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 # Setting up your server
 
 - Consider taking a crash course in linux CLI, either from [text guides like this](https://scicomp.aalto.fi/scicomp/shell/) or from a Youtube video. The terminal to your server is in the bottom of VSCode, and you can open multiple terminals with the "+" button.
-- Java 17 can be installed with the command `sudo yum install java-17-openjdk.aarch64`. You can find other Java versions with `yum search JDK`
-- 
+- Java 17 can be installed with the command `sudo yum install java-17-openjdk.aarch64`. You can find other Java versions with `sudo yum search JDK`
 
 # Installing Minecraft
 
@@ -53,5 +52,5 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 - Set `sync-chunk-writes=false` in your server.properties file, and use a backup mod like FTB Backups, as you should do that anyway.  
 - These are my current java arguments, though some (including zgc) are being benchmarked as I type this: `-server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=100 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=16M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:MaxTenuringThreshold=1 -XX:ConcGCThreads=3 -XX:+ExplicitGCInvokesConcurrent -XX:G1RSetUpdatingPauseTimePercent=12 -XX:+PerfDisableSharedMem -XX:+UseStringDeduplication -XX:+UseFastUnorderedTimeStamps -XX:AllocatePrefetchStyle=1 -XX:+OmitStackTraceInFastThrow -XX:ThreadPriorityPolicy=1 -XX:+UseNUMA -XX:-DontCompileHugeMethods`
 - TODO: Running GraalVM EE instead of OpenJDK can provide a ~15% speedup. But as of this post, it us [missing](https://blogs.oracle.com/developers/post/how-to-install-oracle-java-in-oracle-cloud-infrastructure) from OCL9's repos, so it has to be [manually installed](https://docs.oracle.com/en/graalvm/enterprise/22/docs/getting-started/index.html), and you have to use GraalVM 22.1.0 instead of the latest release.
-- TODO: [Huge Pages] (most simply with the `-XX:+UseTransparentHugePages` flag) provides a nice speedup. but Oracle's default security configuration seems to prevent *either* implementation from working.
+- TODO: [Huge Pages] provides a nice speedup. but Oracle's default security configuration seems to prevent *either* implementation from working. `-XX:+UseTransparentHugePages` in particular seems to silently fail.  
 - TODO: Kernel and IO tuning.
