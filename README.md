@@ -4,7 +4,7 @@ Yes! Oracle will give you 4 good cores, 24GB and a big SSD for free. This is muc
 
 Follow this Oracle guide **to the letter**: https://blogs.oracle.com/developers/post/how-to-set-up-and-run-a-really-powerful-free-minecraft-server-in-the-cloud
 
-But there are gaps, particularly if you want to squeeze every drop of performance out of it for a modded and/or populated server.
+But there are gaps in the guide, particularly if you want to squeeze every drop of performance out of it for a modded and/or populated server.
 
 # Selecting a Virtual Machine Instance
 
