@@ -1,6 +1,6 @@
 # What? A *free* Minecraft server?
 
-Yes, Oracle will give you 4 good cores, 24GB and a big SSD for free. This is better than Aternos or even some paid hosts, but you have to configure everything yourself.
+Yes, Oracle will give you 4 cores, 24GB RAM and an SSD for free. This is better than Aternos or even some paid hosts, but you have to configure everything yourself.
 
 Follow this Oracle guide **to the letter**: https://blogs.oracle.com/developers/post/how-to-set-up-and-run-a-really-powerful-free-minecraft-server-in-the-cloud
 
@@ -37,6 +37,7 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 # Setting up your server
 
 - Consider taking a crash course in linux CLI, either from [text guides like this](https://scicomp.aalto.fi/scicomp/shell/) or from a Youtube video. The linux terminal is in the bottom of VSCode in the "terminal" tab, and you can open multiple terminals with the "+" button.
+- Software on the server can be updated with `sudo yum upgrade`. 
 - Java 17 can be installed with the command `sudo yum install java-17-openjdk.aarch64`. You can find other Java versions with `sudo yum search JDK`
 
 # Installing Minecraft
