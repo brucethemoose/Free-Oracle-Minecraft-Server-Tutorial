@@ -1,6 +1,6 @@
-# What? A free, fast Minecraft server?
+# What? A *free* server?
 
-Yes! Oracle will give you 4 good cores, 24GB and a big SSD for free. This is *much* faster than the hardware you get from Aternos or even some paid hosts.
+Yes! Oracle will give you 4 good cores, 24GB and a big SSD for free. This is much better than the hardware you get from Aternos or even some paid hosts, as Oracle apparently wants users to test their new Ampere servers. But unlike a paid host, you have to configure everything yourself.
 
 Follow this Oracle guide **to the letter**: https://blogs.oracle.com/developers/post/how-to-set-up-and-run-a-really-powerful-free-minecraft-server-in-the-cloud
 
@@ -16,7 +16,7 @@ But there are gaps, particularly if you want to squeeze every drop of performanc
 
 # SSH
 
-The "Connect to the Running VM in the Cloud" instance points you to an article about SSH clients. But for a Minecraft server, you want VSCode as your SSH terminal, as it makes manipulating files on the server easy.
+The "Connect to the Running VM in the Cloud" instance points you to an article about SSH clients. But for a Minecraft server, you probably want VSCode as your SSH terminal, as it makes manipulating files on the server easy.
 
 - Download VSCode: https://code.visualstudio.com/
 - Go to the "Plugins" tab on the left and install the "Remote SSH" plugin.
