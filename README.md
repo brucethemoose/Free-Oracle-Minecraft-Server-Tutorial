@@ -36,14 +36,14 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 
 # Setting up your server
 
-- Consider taking a crash course in linux CLI, either from [text guides like this](https://scicomp.aalto.fi/scicomp/shell/) or from a Youtube video. The terminal to your server is in the bottom of VSCode, and you can open multiple terminals with the "+" button.
+- Consider taking a crash course in linux CLI, either from [text guides like this](https://scicomp.aalto.fi/scicomp/shell/) or from a Youtube video. The linux terminal is in the bottom of VSCode in the "terminal" tab, and you can open multiple terminals with the "+" button.
 - Java 17 can be installed with the command `sudo yum install java-17-openjdk.aarch64`. You can find other Java versions with `sudo yum search JDK`
 
 # Installing Minecraft
 
 - Modded minecraft servers can be downloaded as complete zips from Modrinth, Curseforge and so on. You can either download them/extract them locally and (slowly) upload the whole folder with VSCode, or you can directly download the zip with `wget (url to zip)` and extract it with `unzip (name of zip file` afterin `cd`ing into the directory you want it in.
-- Bundles sh files in modpacks need to be made executable with `sudo chmod +x (.sh file). 
-- If you want the Minecraft server to auto restart after crashing, you can add a bash `while true` loop to the sh file.
+- .sh files in modpacks must be made executable with `sudo chmod +x (.sh file). 
+- If you want the Minecraft server to auto restart after crashing, you can add a bash `while true...done` loop to the sh file.
 - Running the server with an `& disown` at the end of the command, such as `./server-start.sh & disown`, will keep the server running after closing the ssh terminal.
 
 # Performance Tips (WIP)
