@@ -1,6 +1,6 @@
 # What? A *free* server?
 
-Yes! Oracle will give you 4 good cores, 24GB and a big SSD for free. This is much better than the hardware you get from Aternos or even some paid hosts, as Oracle apparently wants users to test their new Ampere servers. But unlike a paid host, you have to configure everything yourself.
+Yes, Oracle will give you 4 good cores, 24GB and a big SSD for free. This is better Aternos or even some paid hosts, but you have to configure everything yourself.
 
 Follow this Oracle guide **to the letter**: https://blogs.oracle.com/developers/post/how-to-set-up-and-run-a-really-powerful-free-minecraft-server-in-the-cloud
 
@@ -50,5 +50,7 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 # Performance Tips (WIP)
 
 - Start the server/script with the prefix `sudo nice -n 18` to ensure the server gets priority over other processes. 
+- Set `sync-chunk-writes=false` in your server.properties file, and use a backup mod like FTB Backups, as you should do that anyway.  
+- These are my current java arguments, though some (including zgc) are being benchmarked as I type this: `-server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=100 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=16M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:MaxTenuringThreshold=1 -XX:ConcGCThreads=3 -XX:+ExplicitGCInvokesConcurrent -XX:G1RSetUpdatingPauseTimePercent=12 -XX:+PerfDisableSharedMem -XX:+UseStringDeduplication -XX:+UseFastUnorderedTimeStamps -XX:AllocatePrefetchStyle=1 -XX:+OmitStackTraceInFastThrow -XX:ThreadPriorityPolicy=1 -XX:+UseNUMA -XX:-DontCompileHugeMethods`
 - Running GraalVM EE instead of OpenJDK can provide a ~15% speedup. But as of this post, it us [missing](https://blogs.oracle.com/developers/post/how-to-install-oracle-java-in-oracle-cloud-infrastructure) from OCL9's repos, so it has to be [manually installed](https://docs.oracle.com/en/graalvm/enterprise/22/docs/getting-started/index.html), and you have to use GraalVM 22.1.0 instead of the latest release.
-- [Huge Pages] provides a nice speedup but Oracle's default security configuration seems to prevent *either* implementation from working. 
+- [Huge Pages] (most simply with the `-XX:+UseTransparentHugePages` flag) provides a nice speedup. but Oracle's default security configuration seems to prevent *either* implementation from working. I'm investigating this.
