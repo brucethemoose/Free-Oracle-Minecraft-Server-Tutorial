@@ -30,7 +30,7 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 - Hit `Connect to host` in the window that pops up, then hit `Oracle`, and confirm any prompts that pop up.
 - Now go to the "File" tab on the left and hit "Open Folder", then click "Continue".  
 ![OpenFolder](https://user-images.githubusercontent.com/8422224/185024808-cbb76aec-ae4c-4e59-8c9e-9a733271d676.PNG)
-- Now the home folder of your Oracle linux server is here! You can create folders and files, move them from your desktop, and download them off the server from this panel. 
+- Now you can create folders and files, move them from your desktop, and download them off the server from this panel. You can also open and edit files like `server.properties` or mod config files directly in vscode. 
 
 
 
