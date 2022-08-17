@@ -1,2 +1,38 @@
-# Free-Oracle-Minecraft-Server-Tutorial
-Tutorial and setup scripts for running a free Minecraft server on a 4-core, 24GB Oracle ARM instance. 
+# What? A free, fast Minecraft server?
+
+Yes! Oracle will give you 4 good cores, 24GB and a big SSD for free. This is *much* faster than the hardware you get from Aternos or even some paid hosts.
+
+Follow this Oracle guide **to the letter**: https://blogs.oracle.com/developers/post/how-to-set-up-and-run-a-really-powerful-free-minecraft-server-in-the-cloud
+
+But there are gaps, particularly if you want to squeeze every drop of performance out of it for a modded and/or populated server.
+
+# Selecting a Virtual Machine Instance
+
+- If you intend to run a modded server (or a highly populated vanilla server), when you get to this section, ignore Oracle's advice and opt for 4 cores and at 12-24GB of RAM.
+- Select the latest version of Oracle Linux as your image, which it doesn't always default to:
+![Oracle9](https://user-images.githubusercontent.com/8422224/185014138-54e002e2-e101-4c58-a94a-778755d0a2e1.PNG)
+- Scroll down to the "boot volume" tab. Select between 75GB and 200GB of storage (which is the limit for free instances, and move the "VPU" slider all the way to the right.
+![Storage](https://user-images.githubusercontent.com/8422224/185015099-36c819f0-940c-4fe0-a336-a2f2cba52364.PNG)
+
+# SSH
+
+The "Connect to the Running VM in the Cloud" instance points you to an article about SSH clients. But for a Minecraft server, you want VSCode as your SSH terminal, as it makes manipulating files on the server easy.
+
+- Download VSCode: https://code.visualstudio.com/
+- Go to the "Plugins" tab on the left and install the "Remote SSH" plugin.
+- Install an SSH client per the instructions here: https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
+- Press `F1`, start typing `SSH Open`, and open your ssh configuration file. If you have more than one, edit the one in your user folder. 
+- [SSH](https://user-images.githubusercontent.com/8422224/185022082-1406c5ae-5a9a-40c8-968f-efb886b26190.PNG)
+- Edit it with your login credentials, and the public IP of your server you got from the Oracle blog:  
+ ![Config](https://user-images.githubusercontent.com/8422224/185022809-e2e88b12-c6f6-42bc-8624-5182c47ed376.PNG)
+- To connect with your server, hit the green button in the bottom left of VScode:  
+ ![Green](https://user-images.githubusercontent.com/8422224/185023259-17108ceb-73f8-4847-bbe8-7e72e6b034e5.PNG)
+- Hit `Connect to host` in the window that pops up, then hit `Oracle`, and confirm any prompts that pop up.
+- Now go to the "File" tab on the left and hit "Open Folder", then click "Continue".  
+![OpenFolder](https://user-images.githubusercontent.com/8422224/185024808-cbb76aec-ae4c-4e59-8c9e-9a733271d676.PNG)
+- Now the home folder of your Oracle linux server is here! You can create folders and files, move them from your desktop, and download them off the server from this panel. 
+
+
+# Installing Minecraft
+
+WIP
