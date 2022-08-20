@@ -16,7 +16,7 @@ But there are gaps in the guide, particularly if you want to squeeze every drop 
 
 # SSH
 
-The "Connect to the Running VM in the Cloud" instance points you to an article about SSH clients. But for a Minecraft server, you probably want VSCode as your SSH terminal, as it makes manipulating files on the server easy.
+The "Connect to the Running VM in the Cloud" section points you to an article about SSH clients. But for a Minecraft server, you probably want VSCode as your SSH terminal, as it makes manipulating files on the server easy.
 
 - Download VSCode: https://code.visualstudio.com/
 - Go to the "Plugins" tab on the left and install the "Remote SSH" plugin.
@@ -42,11 +42,11 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 
 # Installing Minecraft
 
-- Modded minecraft servers can be downloaded as complete zips from Modrinth, Curseforge and so on. You can either download them/extract them locally and (slowly) upload the whole folder with VSCode, or you can directly download the zip with `wget (url to zip)` and extract it with `unzip (name of zip file` afterin `cd`ing into the directory you want it in.
+- Modded minecraft servers can be downloaded as complete zips from Modrinth, Curseforge and so on. You can either download them/extract them locally and (slowly) upload the whole folder with VSCode, or you can directly download the zip with `wget (url to zip)` and extract it with `unzip (name of zip file)` after you `cd` into the directory you want.
 - .sh files in modpacks must be made executable with `sudo chmod +x (.sh file). 
 - If you want the Minecraft server to auto restart after crashing, you can add a bash `while true...done` loop to the sh file.
 - Running the server with an `& disown` at the end of the command, such as `./server-start.sh & disown`, will keep the server running after closing the ssh terminal.
-- Running commands with `sudo` in the background is  `nohup sudo -b nohup [command] & disown`. This is probably redundant, but sudo applications seem to quit in the background with any other combination.
+- Running commands with `sudo` in the background can be done with  `nohup sudo -b nohup [command] & disown`. This is probably redundant, but sudo applications seem to quit in the background with any other combination.
 
 # Performance Tips
 
@@ -54,6 +54,6 @@ The "Connect to the Running VM in the Cloud" instance points you to an article a
 - Start the server/script with the prefix `sudo nice -n -18` to ensure the server gets priority over other processes. This requires `sudo`.
 - Set `sync-chunk-writes=false` in your server.properties file, and use a backup mod like FTB Backups, as you should do that anyway.  
 - These are my current java arguments, though some (including zgc) are being benchmarked as I type this: `-server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=100 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=16M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:MaxTenuringThreshold=1 -XX:ConcGCThreads=3 -XX:+ExplicitGCInvokesConcurrent -XX:G1RSetUpdatingPauseTimePercent=12 -XX:+PerfDisableSharedMem -XX:+UseStringDeduplication -XX:+UseFastUnorderedTimeStamps -XX:AllocatePrefetchStyle=1 -XX:+OmitStackTraceInFastThrow -XX:ThreadPriorityPolicy=1 -XX:+UseNUMA -XX:-DontCompileHugeMethods`
-- TODO: Running GraalVM EE instead of OpenJDK can provide a ~15% speedup. But as of this post, it us [missing](https://blogs.oracle.com/developers/post/how-to-install-oracle-java-in-oracle-cloud-infrastructure) from OCL9's repos, so it has to be [manually installed](https://docs.oracle.com/en/graalvm/enterprise/22/docs/getting-started/index.html), and you have to use GraalVM 22.1.0 instead of the latest release.
+- TODO: Running GraalVM EE instead of OpenJDK can provide a ~15% speedup. But as of this post, it is [missing](https://blogs.oracle.com/developers/post/how-to-install-oracle-java-in-oracle-cloud-infrastructure) from OCL9's repos, so it has to be [manually installed](https://docs.oracle.com/en/graalvm/enterprise/22/docs/getting-started/index.html), and you have to use GraalVM 22.1.0 instead of the latest release.
 - TODO: [Huge Pages] provides a nice speedup. but Oracle's default security configuration seems to prevent *either* implementation from working. `-XX:+UseTransparentHugePages` in particular seems to silently fail.  
 - TODO: Kernel and IO tuning.
