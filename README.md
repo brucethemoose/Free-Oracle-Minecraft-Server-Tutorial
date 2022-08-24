@@ -45,8 +45,8 @@ The "Connect to the Running VM in the Cloud" section points you to an article ab
 - Modded minecraft servers can be downloaded as complete zips from Modrinth, Curseforge and so on. You can either download them/extract them locally and (slowly) upload the whole folder with VSCode, or you can directly download the zip with `wget (url to zip)` and extract it with `unzip (name of zip file)` after you `cd` into the directory you want.
 - .sh files in modpacks must be made executable with `sudo chmod +x (.sh file). 
 - If you want the Minecraft server to auto restart after crashing, you can add a bash `while true...done` loop to the sh file.
-- Running the server with an `& disown` at the end of the command, such as `./server-start.sh & disown`, will keep the server running after closing the ssh terminal.
-- Running commands with `sudo` in the background can be done with  `nohup sudo -b nohup [command] & disown`. This is probably redundant, but sudo applications seem to quit in the background with any other combination.
+- Running the server with `nohup` at the beginning of the command, such as `nohup ./server-start.sh`, will keep the server running after closing the ssh terminal. 
+- Running commands with `sudo` in the background can be done with  `nohup sudo -b nohup [command]`. This is probably redundant, but sudo applications seem to quit in the background with any other combination.
 
 # Performance Tips
 
